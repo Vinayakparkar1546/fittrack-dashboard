@@ -1,0 +1,664 @@
+
+/* ==========================================
+   FITTRACK DASHBOARD
+   Ceramic Ivory • Royal Navy • Brushed Gold
+========================================== */
+
+:root {
+    --ceramic: #f7f4ed;
+    --ceramic-white: #fffdf8;
+    --ceramic-shadow: #e8e0d2;
+
+    --navy: #12365a;
+    --navy-deep: #0b2745;
+    --navy-light: #31577d;
+
+    --gold: #b88a36;
+    --gold-light: #dfc17c;
+
+    --text: #24364b;
+    --muted: #718096;
+    --border: #e6dfd3;
+    --success: #287c62;
+
+    --radius: 18px;
+    --transition: 240ms ease;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    min-height: 100vh;
+    font-family: "Segoe UI", Arial, sans-serif;
+    color: var(--text);
+    line-height: 1.6;
+    background:
+        radial-gradient(
+            ellipse at top left,
+            #fffefa 0%,
+            transparent 55%
+        ),
+        linear-gradient(135deg, #f8f5ef, #eee9df);
+}
+
+/* ==========================================
+   NAVIGATION
+========================================== */
+
+.navbar {
+    min-height: 82px;
+    padding: 16px 4%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+
+    background: rgba(255, 253, 248, 0.96);
+    border-bottom: 1px solid var(--border);
+    box-shadow: 0 4px 18px rgba(18, 54, 90, 0.05);
+
+    position: relative;
+    z-index: 2;
+}
+
+.logo {
+    color: var(--navy);
+    font-size: 29px;
+    font-weight: 800;
+    letter-spacing: -1px;
+}
+
+.logo span {
+    color: var(--gold);
+}
+
+.nav-label {
+    color: var(--navy);
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+}
+
+/* ==========================================
+   MAIN LAYOUT
+========================================== */
+
+.container {
+    width: 100%;
+    max-width: 1440px;
+    margin: 0 auto;
+    padding: 28px 4%;
+}
+
+/* ==========================================
+   HERO SECTION
+========================================== */
+
+.hero {
+    min-height: 330px;
+    padding: 36px;
+
+    display: grid;
+    grid-template-columns: 1.2fr 0.8fr;
+    align-items: center;
+    gap: 40px;
+
+    overflow: hidden;
+    position: relative;
+    isolation: isolate;
+
+    border: 1px solid rgba(184, 138, 54, 0.25);
+    border-radius: 24px;
+
+    background:
+        linear-gradient(
+            100deg,
+            rgba(255, 253, 248, 0.98) 0%,
+            rgba(250, 247, 239, 0.95) 48%,
+            rgba(234, 225, 207, 0.82) 100%
+        );
+
+    box-shadow:
+        0 12px 35px rgba(18, 54, 90, 0.07),
+        inset 0 1px 0 white;
+
+    animation: hero-enter 650ms ease both;
+}
+
+.hero::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    pointer-events: none;
+
+    opacity: 0.4;
+
+    background:
+        radial-gradient(
+            circle at 90% 20%,
+            #e4c987 0,
+            transparent 30%
+        ),
+        linear-gradient(
+            125deg,
+            transparent 50%,
+            #e7dfd1 100%
+        );
+}
+
+.eyebrow {
+    margin-bottom: 12px;
+    color: var(--gold);
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 2px;
+}
+
+.hero h1 {
+    margin-bottom: 18px;
+
+    color: var(--navy);
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: clamp(34px, 4vw, 54px);
+    font-weight: 700;
+    line-height: 1.12;
+    letter-spacing: -1px;
+}
+
+.hero h1 span {
+    color: var(--gold);
+}
+
+.subtitle {
+    max-width: 530px;
+    color: #52657b;
+    font-size: 16px;
+}
+
+/* ==========================================
+   MOTIVATIONAL QUOTE CARD
+========================================== */
+
+.quote-card {
+    width: 100%;
+    max-width: 440px;
+    justify-self: center;
+    padding: 26px;
+
+    border: 1px solid rgba(184, 138, 54, 0.28);
+    border-radius: 20px;
+
+    background: rgba(255, 253, 248, 0.9);
+
+    box-shadow:
+        0 12px 28px rgba(18, 54, 90, 0.09),
+        inset 0 1px 2px white;
+
+    transition:
+        transform var(--transition),
+        box-shadow var(--transition);
+}
+
+.quote-card:hover {
+    transform: translateY(-4px);
+
+    box-shadow:
+        0 18px 34px rgba(18, 54, 90, 0.13),
+        inset 0 1px 2px white;
+}
+
+.quote-icon {
+    color: var(--gold);
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 54px;
+    font-weight: bold;
+    line-height: 0.9;
+}
+
+#quote {
+    margin: 12px 0 18px;
+
+    color: var(--navy);
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 23px;
+    line-height: 1.4;
+
+    transition: opacity 200ms ease;
+}
+
+.quote-label {
+    display: block;
+    margin-bottom: 15px;
+
+    color: var(--gold);
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 1.5px;
+}
+
+/* ==========================================
+   BUTTON BASE STYLES
+========================================== */
+
+button {
+    font: inherit;
+    cursor: pointer;
+}
+
+#new-quote,
+.submit-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+
+    color: white;
+    background: linear-gradient(
+        135deg,
+        var(--navy),
+        var(--navy-deep)
+    );
+
+    border: 1px solid var(--gold);
+    border-radius: 999px;
+
+    box-shadow: 0 5px 12px rgba(18, 54, 90, 0.14);
+
+    transition:
+        transform var(--transition),
+        box-shadow var(--transition),
+        background var(--transition),
+        border-color var(--transition);
+}
+
+#new-quote {
+    padding: 12px 22px;
+    font-size: 14px;
+    font-weight: 700;
+}
+
+#new-quote:hover,
+.submit-button:hover {
+    transform: translateY(-3px);
+
+    border-color: var(--gold-light);
+
+    background: linear-gradient(
+        135deg,
+        #1c4b76,
+        var(--navy)
+    );
+
+    box-shadow: 0 9px 20px rgba(18, 54, 90, 0.23);
+}
+
+#new-quote:active,
+.submit-button:active {
+    transform: translateY(0) scale(0.99);
+}
+
+/* ==========================================
+   ANIMATED BUTTON ICONS
+========================================== */
+
+.button-icon {
+    display: inline-block;
+    flex-shrink: 0;
+
+    transition:
+        transform 300ms ease,
+        color 300ms ease;
+}
+
+#new-quote:hover .refresh-icon {
+    transform: rotate(180deg);
+    color: var(--gold-light);
+}
+
+.submit-button:hover .report-icon {
+    transform: translateY(-3px) rotate(-8deg) scale(1.12);
+    color: var(--gold-light);
+}
+
+.arrow-icon {
+    transition: transform 250ms ease;
+}
+
+button:hover .arrow-icon {
+    transform: translateX(5px);
+}
+
+button:focus-visible .button-icon {
+    color: var(--gold-light);
+}
+
+/* Gentle icon movement on keyboard focus too */
+#new-quote:focus-visible .refresh-icon {
+    transform: rotate(180deg);
+}
+
+/* ==========================================
+   FITNESS FORM PANEL
+========================================== */
+
+.form-section {
+    margin-top: 28px;
+    padding: 32px;
+
+    border: 1px solid var(--border);
+    border-radius: 22px;
+
+    background: rgba(255, 253, 248, 0.96);
+
+    box-shadow:
+        0 10px 30px rgba(18, 54, 90, 0.06),
+        inset 0 1px 0 white;
+
+    animation: panel-enter 700ms ease both;
+}
+
+.section-heading {
+    margin-bottom: 28px;
+}
+
+.section-heading .eyebrow {
+    margin-bottom: 5px;
+}
+
+.section-heading h2 {
+    margin-bottom: 8px;
+
+    color: var(--navy);
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: clamp(27px, 3vw, 38px);
+    line-height: 1.25;
+}
+
+.section-heading > p:last-child {
+    color: var(--muted);
+}
+
+/* ==========================================
+   FORM GRID AND FIELDS
+========================================== */
+
+.form-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 24px;
+}
+
+.field {
+    min-width: 0;
+}
+
+.field label {
+    display: block;
+    margin-bottom: 9px;
+
+    color: var(--navy);
+    font-size: 14px;
+    font-weight: 700;
+
+    transition: color var(--transition);
+}
+
+.field input,
+.field select {
+    width: 100%;
+    min-height: 49px;
+    padding: 12px 14px;
+
+    border: 1px solid #ddd7cb;
+    border-radius: 11px;
+    outline: none;
+
+    color: var(--navy);
+
+    background: linear-gradient(
+        145deg,
+        #fffdf9,
+        #f6f2e9
+    );
+
+    box-shadow:
+        inset 0 1px 2px rgba(18, 54, 90, 0.025),
+        0 2px 4px rgba(18, 54, 90, 0.025);
+
+    font-family: inherit;
+    font-size: 14px;
+
+    transition:
+        border-color var(--transition),
+        box-shadow var(--transition),
+        transform var(--transition),
+        background var(--transition);
+}
+
+.field input::placeholder {
+    color: #9ba4af;
+}
+
+.field:hover label {
+    color: var(--gold);
+}
+
+.field input:hover,
+.field select:hover {
+    border-color: #c4a45e;
+    background: #fffefa;
+
+    transform: translateY(-1px);
+
+    box-shadow: 0 4px 10px rgba(18, 54, 90, 0.06);
+}
+
+.field input:focus,
+.field select:focus {
+    border-color: var(--gold);
+    background: #fffefa;
+
+    box-shadow: 0 0 0 3px rgba(184, 138, 54, 0.15);
+}
+
+.full-width {
+    grid-column: 1 / -1;
+}
+
+/* ==========================================
+   GENERATE REPORT BUTTON
+========================================== */
+
+.submit-button {
+    width: 100%;
+    min-height: 58px;
+    margin-top: 30px;
+    padding: 15px 22px;
+
+    border-width: 2px;
+    border-radius: 15px;
+
+    font-size: 16px;
+    font-weight: 800;
+    letter-spacing: 0.2px;
+}
+
+.form-note {
+    margin-top: 12px;
+
+    color: var(--muted);
+    text-align: center;
+    font-size: 12px;
+}
+
+#message {
+    min-height: 0;
+    margin-top: 12px;
+
+    color: var(--success);
+    font-size: 14px;
+    text-align: center;
+}
+
+/* ==========================================
+   FOOTER
+========================================== */
+
+footer {
+    margin-top: 28px;
+    padding: 22px 10px;
+
+    border-top: 1px solid var(--border);
+
+    color: var(--navy-light);
+    text-align: center;
+    font-size: 13px;
+}
+
+/* ==========================================
+   ACCESSIBILITY
+========================================== */
+
+button:focus-visible,
+input:focus-visible,
+select:focus-visible {
+    outline: 3px solid rgba(184, 138, 54, 0.5);
+    outline-offset: 3px;
+}
+
+/* ==========================================
+   ENTRANCE ANIMATIONS
+========================================== */
+
+@keyframes hero-enter {
+    from {
+        opacity: 0;
+        transform: translateY(12px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes panel-enter {
+    from {
+        opacity: 0;
+        transform: translateY(16px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ==========================================
+   TABLET RESPONSIVENESS
+========================================== */
+
+@media (max-width: 900px) {
+    .hero {
+        grid-template-columns: 1fr;
+        gap: 25px;
+        padding: 28px;
+    }
+
+    .quote-card {
+        justify-self: start;
+    }
+
+    .form-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+/* ==========================================
+   MOBILE RESPONSIVENESS
+========================================== */
+
+@media (max-width: 600px) {
+    .navbar {
+        min-height: 70px;
+        padding: 14px 5%;
+    }
+
+    .logo {
+        font-size: 24px;
+    }
+
+    .nav-label {
+        max-width: 125px;
+        text-align: right;
+        font-size: 10px;
+        letter-spacing: 1px;
+    }
+
+    .container {
+        padding: 18px 4%;
+    }
+
+    .hero {
+        padding: 23px;
+        border-radius: 18px;
+    }
+
+    .hero h1 {
+        font-size: 36px;
+    }
+
+    .subtitle {
+        font-size: 14px;
+    }
+
+    .quote-card {
+        padding: 20px;
+    }
+
+    #quote {
+        font-size: 21px;
+    }
+
+    .form-section {
+        padding: 22px 18px;
+    }
+
+    .form-grid {
+        grid-template-columns: 1fr;
+        gap: 18px;
+    }
+
+    .full-width {
+        grid-column: auto;
+    }
+
+    .submit-button {
+        gap: 8px;
+        padding: 14px 10px;
+        font-size: 14px;
+    }
+}
+
+/* ==========================================
+   REDUCED MOTION ACCESSIBILITY
+========================================== */
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        scroll-behavior: auto !important;
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
+    }
+}

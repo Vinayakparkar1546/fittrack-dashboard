@@ -1,0 +1,258 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#f7f4ed">
+
+    <title>FitTrack | Fitness Dashboard</title>
+
+    <link rel="stylesheet" href="/style.css">
+</head>
+
+<body>
+    <!-- Navigation -->
+    <header class="navbar">
+        <div class="logo">Fit<span>Track</span></div>
+        <div class="nav-label">YOUR FITNESS JOURNEY</div>
+    </header>
+
+    <main class="container">
+
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="hero-content">
+                <p class="eyebrow">YOUR JOURNEY STARTS HERE</p>
+
+                <h1>
+                    Build a stronger<br>
+                    version of <span>yourself.</span>
+                </h1>
+
+                <p class="subtitle">
+                    Small steps. Consistent effort. Real progress.
+                    Tell us about your fitness goals and create your
+                    personal fitness report.
+                </p>
+            </div>
+
+            <!-- Motivational Quote -->
+            <div class="quote-card">
+                <div class="quote-icon" aria-hidden="true">“</div>
+
+                <p id="quote" aria-live="polite">
+                    The secret of getting ahead is getting started.
+                </p>
+
+                <span class="quote-label">YOUR DAILY MOTIVATION</span>
+
+                <button id="new-quote" type="button">
+                    <span
+                        class="button-icon refresh-icon"
+                        aria-hidden="true"
+                    >↻</span>
+
+                    <span>New motivation</span>
+
+                    <span
+                        class="button-icon arrow-icon"
+                        aria-hidden="true"
+                    >→</span>
+                </button>
+            </div>
+        </section>
+
+        <!-- Fitness Assessment -->
+        <section class="form-section">
+            <div class="section-heading">
+                <p class="eyebrow">PERSONAL FITNESS ASSESSMENT</p>
+
+                <h2>Let's get to know you.</h2>
+
+                <p>
+                    Share a few details to personalize your fitness report.
+                </p>
+            </div>
+
+            <form id="fitness-form">
+                <div class="form-grid">
+
+                    <!-- Name -->
+                    <div class="field">
+                        <label for="name">Full name *</label>
+
+                        <input
+                            id="name"
+                            name="name"
+                            type="text"
+                            placeholder="Enter your name"
+                            autocomplete="name"
+                            required
+                        >
+                    </div>
+
+                    <!-- Age -->
+                    <div class="field">
+                        <label for="age">Age *</label>
+
+                        <input
+                            id="age"
+                            name="age"
+                            type="number"
+                            min="10"
+                            max="120"
+                            step="1"
+                            placeholder="Your age"
+                            required
+                        >
+                    </div>
+
+                    <!-- Gender -->
+                    <div class="field">
+                        <label for="gender">Gender (optional)</label>
+
+                        <select id="gender" name="gender">
+                            <option value="">Prefer not to say</option>
+                            <option value="Male">Male</option>
+                            <option value="Female">Female</option>
+                            <option value="Other">Other</option>
+                        </select>
+                    </div>
+
+                    <!-- Height -->
+                    <div class="field">
+                        <label for="height">Height (cm) *</label>
+
+                        <input
+                            id="height"
+                            name="height"
+                            type="number"
+                            min="50"
+                            max="250"
+                            step="0.1"
+                            placeholder="e.g. 170"
+                            required
+                        >
+                    </div>
+
+                    <!-- Weight -->
+                    <div class="field">
+                        <label for="weight">Weight (kg) *</label>
+
+                        <input
+                            id="weight"
+                            name="weight"
+                            type="number"
+                            min="10"
+                            max="500"
+                            step="0.1"
+                            placeholder="e.g. 68"
+                            required
+                        >
+                    </div>
+
+                    <!-- Fitness Goal -->
+                    <div class="field">
+                        <label for="goal">Fitness goal *</label>
+
+                        <select id="goal" name="goal" required>
+                            <option value="">Choose your goal</option>
+                            <option value="Weight loss">Weight loss</option>
+                            <option value="Muscle gain">Muscle gain</option>
+                            <option value="Improve endurance">
+                                Improve endurance
+                            </option>
+                            <option value="Stay healthy and active">
+                                Stay healthy and active
+                            </option>
+                            <option value="Improve flexibility">
+                                Improve flexibility
+                            </option>
+                        </select>
+                    </div>
+
+                    <!-- Activity Level -->
+                    <div class="field">
+                        <label for="activity">
+                            Current activity level *
+                        </label>
+
+                        <select id="activity" name="activity" required>
+                            <option value="">Select activity level</option>
+                            <option value="Sedentary">Sedentary</option>
+                            <option value="Lightly active">
+                                Lightly active
+                            </option>
+                            <option value="Moderately active">
+                                Moderately active
+                            </option>
+                            <option value="Very active">Very active</option>
+                        </select>
+                    </div>
+
+                    <!-- Workout Experience -->
+                    <div class="field">
+                        <label for="experience">
+                            Workout experience *
+                        </label>
+
+                        <select id="experience" name="experience" required>
+                            <option value="">Select experience</option>
+                            <option value="Beginner">Beginner</option>
+                            <option value="Intermediate">
+                                Intermediate
+                            </option>
+                            <option value="Advanced">Advanced</option>
+                        </select>
+                    </div>
+
+                    <!-- Diet -->
+                    <div class="field full-width">
+                        <label for="diet">Diet preference *</label>
+
+                        <select id="diet" name="diet" required>
+                            <option value="">Select diet preference</option>
+                            <option value="Vegetarian">Vegetarian</option>
+                            <option value="Non-vegetarian">
+                                Non-vegetarian
+                            </option>
+                            <option value="Vegan">Vegan</option>
+                            <option value="Other">Other</option>
+                        </select>
+                    </div>
+
+                </div>
+
+                <!-- Generate Report -->
+                <button class="submit-button" type="submit">
+                    <span
+                        class="button-icon report-icon"
+                        aria-hidden="true"
+                    >▤</span>
+
+                    <span>Generate My Fitness Report</span>
+
+                    <span
+                        class="button-icon arrow-icon"
+                        aria-hidden="true"
+                    >→</span>
+                </button>
+
+                <p class="form-note">* Required fields</p>
+
+                <p id="message" role="status" aria-live="polite"></p>
+            </form>
+        </section>
+
+        <!-- Footer -->
+        <footer>
+            FitTrack Dashboard · Your journey, your progress.
+        </footer>
+
+    </main>
+
+    <!-- JavaScript -->
+    <script src="/script.js"></script>
+</body>
+</html>
