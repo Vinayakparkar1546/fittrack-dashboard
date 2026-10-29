@@ -1,4 +1,5 @@
 
+```groovy
 pipeline {
     agent any
 
@@ -37,6 +38,7 @@ pipeline {
         stage('Docker Build') {
             steps {
                 sh '''
+                    set -eu
                     docker build -t ${IMAGE_NAME}:${BUILD_NUMBER} .
                 '''
             }
@@ -45,7 +47,9 @@ pipeline {
         stage('Load Image into Minikube') {
             steps {
                 sh '''
-                    minikube image load ${IMAGE_NAME}:${BUILD_NUMBER}
+                    set -eu
+                    docker save ${IMAGE_NAME}:${BUILD_NUMBER} |
+                        docker exec -i minikube ctr -n k8s.io images import -
                 '''
             }
         }
@@ -53,11 +57,12 @@ pipeline {
         stage('Deploy to Kubernetes') {
             steps {
                 sh '''
+                    set -eu
                     kubectl set image deployment/${K8S_DEPLOYMENT} \
-                      ${K8S_CONTAINER}=${IMAGE_NAME}:${BUILD_NUMBER}
+                        ${K8S_CONTAINER}=${IMAGE_NAME}:${BUILD_NUMBER}
 
                     kubectl rollout status deployment/${K8S_DEPLOYMENT} \
-                      --timeout=180s
+                        --timeout=180s
                 '''
             }
         }
@@ -65,6 +70,7 @@ pipeline {
         stage('Verify Deployment') {
             steps {
                 sh '''
+                    set -eu
                     kubectl get deployment ${K8S_DEPLOYMENT}
                     kubectl get pods -l app=fittrack
                     kubectl get service fittrack-service
@@ -77,8 +83,10 @@ pipeline {
         success {
             echo 'FitTrack pipeline completed successfully!'
         }
+
         failure {
             echo 'Pipeline failed. Check the stage logs to identify the issue.'
         }
     }
 }
+```
